@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b04b25vu8duj8"]
+
+[ext_resource type="Texture2D" uid="uid://bnjv3x78c0006" path="res://icon.svg" id="1_lbg61"]
+[ext_resource type="Script" uid="uid://migdxf1tluyi" path="res://cenas/teste_recurso/arrastar.gd" id="1_un3lp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1tiw"]
+size = Vector2(124, 117)
+
+[sub_resource type="Gradient" id="Gradient_lbg61"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[node name="Teste" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_un3lp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_lbg61")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_k1tiw")
+
+[node name="sabao" type="Line2D" parent="Area2D"]
+width = 100.0
+gradient = SubResource("Gradient_lbg61")
+joint_mode = 2
+antialiased = true

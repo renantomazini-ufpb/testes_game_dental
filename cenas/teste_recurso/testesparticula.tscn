@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://vnrehv8ttdgq"]
+
+[ext_resource type="Script" uid="uid://bv1iuu0r8tts8" path="res://cenas/teste_recurso/particula_escova.gd" id="1_4456e"]
+[ext_resource type="Texture2D" uid="uid://chcrvaxnhk6u7" path="res://images/vecteezy_dental-care-icons-set-tooth-health-hygiene-treatment_53456680.png" id="2_wg3vt"]
+[ext_resource type="Texture2D" uid="uid://brcgcj3l84opv" path="res://images/bolha.png" id="3_wg3vt"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_t6ifx"]
+blend_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7p22"]
+atlas = ExtResource("2_wg3vt")
+region = Rect2(6990, 1281, 1165, 1281)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2fntt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7p22")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1lf4"]
+size = Vector2(280.00006, 330.00012)
+
+[node name="Testes" type="Node2D"]
+
+[node name="Dente" type="Node2D" parent="."]
+script = ExtResource("1_4456e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Dente"]
+material = SubResource("CanvasItemMaterial_t6ifx")
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_2fntt")
+
+[node name="Area2D" type="Area2D" parent="Dente/AnimatedSprite2D"]
+position = Vector2(0, -154.99988)
+scale = Vector2(0.99999946, 0.99999946)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dente/AnimatedSprite2D/Area2D"]
+position = Vector2(290.00015, -140.00021)
+scale = Vector2(1.0000002, 1.0000002)
+shape = SubResource("RectangleShape2D_h1lf4")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Dente/AnimatedSprite2D"]
+amount = 3
+texture = ExtResource("3_wg3vt")
+lifetime = 2.0
+randomness = 0.23
+scale_amount_min = 0.0
+scale_amount_max = 0.05
+split_scale = true
+scale_curve_x = null
+scale_curve_y = null

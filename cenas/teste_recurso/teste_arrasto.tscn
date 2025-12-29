@@ -1,0 +1,102 @@
+[gd_scene load_steps=15 format=3 uid="uid://f6m42xn1n5sq"]
+
+[ext_resource type="Script" uid="uid://migdxf1tluyi" path="res://cenas/teste_recurso/arrastar.gd" id="1_k3obs"]
+[ext_resource type="Texture2D" uid="uid://chcrvaxnhk6u7" path="res://images/vecteezy_dental-care-icons-set-tooth-health-hygiene-treatment_53456680.png" id="2_okfr5"]
+[ext_resource type="Texture2D" uid="uid://brcgcj3l84opv" path="res://images/bolha.png" id="3_1028o"]
+[ext_resource type="Script" uid="uid://e0svqxba7ol0" path="res://cenas/teste_recurso/dente_area_teste.gd" id="4_okfr5"]
+[ext_resource type="Texture2D" uid="uid://daqca766mh44c" path="res://images/dentist-05.png" id="4_uvrnn"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gosui"]
+blend_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dfpg"]
+atlas = ExtResource("2_okfr5")
+region = Rect2(6990, 1281, 1165, 1281)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vyknu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dfpg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fgtwc"]
+radius = 173.4615
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsf7n"]
+size = Vector2(740, 656.6666)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ugyg"]
+size = Vector2(62, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okfr5"]
+size = Vector2(52, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1028o"]
+size = Vector2(14, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvrnn"]
+size = Vector2(16, 51)
+
+[node name="TesteArrasto" type="Node2D"]
+
+[node name="AreaEscova" type="Area2D" parent="."]
+scale = Vector2(0.15, 0.15)
+script = ExtResource("1_k3obs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaEscova"]
+material = SubResource("CanvasItemMaterial_gosui")
+sprite_frames = SubResource("SpriteFrames_vyknu")
+
+[node name="CerdasColision" type="CollisionShape2D" parent="AreaEscova"]
+position = Vector2(266.66666, -326.66666)
+shape = SubResource("CircleShape2D_fgtwc")
+
+[node name="Bolhas" type="CPUParticles2D" parent="AreaEscova/CerdasColision"]
+z_index = 3
+amount = 32
+texture = ExtResource("3_1028o")
+lifetime = 0.35000000000000003
+preprocess = 0.5
+gravity = Vector2(0, 0)
+scale_amount_min = 0.05
+scale_amount_max = 0.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaEscova"]
+position = Vector2(-103.33334, 141.66666)
+shape = SubResource("RectangleShape2D_bsf7n")
+
+[node name="denteArea" type="Area2D" parent="."]
+position = Vector2(230, 201)
+script = ExtResource("4_okfr5")
+
+[node name="denteColisorCima" type="CollisionShape2D" parent="denteArea"]
+position = Vector2(33, 56)
+shape = SubResource("RectangleShape2D_7ugyg")
+
+[node name="denteSprite" type="Sprite2D" parent="denteArea"]
+position = Vector2(25, 75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_uvrnn")
+hframes = 8
+vframes = 6
+frame = 1
+
+[node name="denteColisorBaixo" type="CollisionShape2D" parent="denteArea"]
+position = Vector2(33, 100)
+shape = SubResource("RectangleShape2D_okfr5")
+
+[node name="denteColisorEsquerda" type="CollisionShape2D" parent="denteArea"]
+position = Vector2(5, 83)
+shape = SubResource("RectangleShape2D_1028o")
+
+[node name="denteColisorDireita" type="CollisionShape2D" parent="denteArea"]
+position = Vector2(61, 83)
+shape = SubResource("RectangleShape2D_uvrnn")
+
+[connection signal="area_shape_entered" from="denteArea" to="AreaEscova" method="_on_dente_area_area_shape_entered"]
+[connection signal="area_shape_entered" from="denteArea" to="denteArea" method="_on_area_shape_entered"]
