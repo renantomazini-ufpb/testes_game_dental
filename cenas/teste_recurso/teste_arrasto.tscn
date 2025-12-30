@@ -64,7 +64,8 @@ shape = SubResource("CircleShape2D_fgtwc")
 
 [node name="Bolhas" type="CPUParticles2D" parent="AreaEscova/CerdasArea/CerdasColision"]
 z_index = 3
-amount = 32
+emitting = false
+amount = 18
 texture = ExtResource("3_1028o")
 lifetime = 0.35000000000000003
 preprocess = 0.5
