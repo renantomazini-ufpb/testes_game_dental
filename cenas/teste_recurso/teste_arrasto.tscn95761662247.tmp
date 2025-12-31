@@ -46,7 +46,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1028o"]
-size = Vector2(53, 8)
+size = Vector2(53, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvrnn"]
 size = Vector2(9, 40)
@@ -55,7 +55,7 @@ size = Vector2(9, 40)
 size = Vector2(8.5, 39.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ycw7d"]
-size = Vector2(56, 16)
+size = Vector2(51, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8jqaf"]
 size = Vector2(70, 72)
@@ -106,7 +106,7 @@ frame = 1
 [node name="DenteColisorCima" type="Area2D" parent="denteArea"]
 
 [node name="CollisionShapeCima" type="CollisionShape2D" parent="denteArea/DenteColisorCima"]
-position = Vector2(33.5, 50)
+position = Vector2(33.5, 56)
 shape = SubResource("RectangleShape2D_1028o")
 
 [node name="DenteColisorEsquerda" type="Area2D" parent="denteArea"]
@@ -114,19 +114,17 @@ shape = SubResource("RectangleShape2D_1028o")
 [node name="CollisionShapeEsquerda" type="CollisionShape2D" parent="denteArea/DenteColisorEsquerda"]
 position = Vector2(2.5, 73)
 shape = SubResource("RectangleShape2D_uvrnn")
-disabled = true
 
 [node name="DenteColisorDireita" type="Area2D" parent="denteArea"]
 
 [node name="CollisionShapeDireita" type="CollisionShape2D" parent="denteArea/DenteColisorDireita"]
 position = Vector2(64.75, 73.25)
 shape = SubResource("RectangleShape2D_7ugyg")
-disabled = true
 
-[node name="DenteColisorBaixo" type="Area2D" parent="denteArea"]
+[node name="DenteColisorBaixo2" type="Area2D" parent="denteArea"]
 
-[node name="CollisionShapeBaixo" type="CollisionShape2D" parent="denteArea/DenteColisorBaixo"]
-position = Vector2(33, 95)
+[node name="CollisionShapeBaixo" type="CollisionShape2D" parent="denteArea/DenteColisorBaixo2"]
+position = Vector2(33.5, 94.5)
 shape = SubResource("RectangleShape2D_ycw7d")
 
 [node name="CollisionShapeArea" type="CollisionShape2D" parent="denteArea"]
@@ -144,5 +142,5 @@ autostart = true
 [connection signal="area_shape_entered" from="denteArea/DenteColisorCima" to="denteArea" method="_on_dente_colisor_cima_area_shape_entered"]
 [connection signal="area_shape_entered" from="denteArea/DenteColisorEsquerda" to="denteArea" method="_on_dente_colisor_esquerda_area_shape_entered"]
 [connection signal="area_shape_entered" from="denteArea/DenteColisorDireita" to="denteArea" method="_on_dente_colisor_direita_area_shape_entered"]
-[connection signal="area_shape_entered" from="denteArea/DenteColisorBaixo" to="denteArea" method="_on_dente_colisor_baixo_2_area_shape_entered"]
+[connection signal="area_shape_entered" from="denteArea/DenteColisorBaixo2" to="denteArea" method="_on_dente_colisor_baixo_2_area_shape_entered"]
 [connection signal="timeout" from="denteArea/Timer" to="denteArea" method="_on_timer_timeout"]

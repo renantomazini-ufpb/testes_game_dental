@@ -38,3 +38,19 @@ func _on_cerdas_area_area_shape_entered(area_rid: RID, area: Area2D, area_shape_
 func _on_cerdas_area_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.name == "denteArea":
 		bolha.emitting = false
+
+
+func _on_dente_colisor_cima_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	pass # Replace with function body.
+
+
+func _on_dente_colisor_esquerda_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	pass # Replace with function body.
+
+
+func _on_dente_colisor_direita_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	pass # Replace with function body.
+
+
+func _on_dente_colisor_baixo_2_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	pass # Replace with function body.
