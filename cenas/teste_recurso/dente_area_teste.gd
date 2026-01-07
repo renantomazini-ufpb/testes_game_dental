@@ -16,12 +16,12 @@ func _process(delta: float) -> void:
 		$DenteColisorEsquerda/CollisionShapeEsquerda.disabled = false
 		$DenteColisorDireita/CollisionShapeDireita.disabled = false
 	if rep_hor == 10:
-		$denteSprite.frame = 0
+		$denteSprite.set_animation('maismenos')
 
 
 func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.name == 'AreaEscova':
-		pass
+		$denteSprite.set_animation('maismenos')
 		#$denteSprite.frame = 0
 
 
