@@ -20,12 +20,19 @@ func _input_event(viewport, event, shape_idx):
 			#bolha.set_emitting(false)
 			#trail.clear_points() # opcional: limpa ao soltar
 
+func _ready() -> void:
+	escova.pause()
+
 func _process(delta):
 	if dragging:
 		global_position = get_global_mouse_position() + escova.position
+		#escova.autoplay = ''
+		escova.play("default")
 		#print("-")
 		#print(self.global_position)
 		#print("----")
+	else:
+		escova.pause()
 
 func _on_dente_area_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	#print(area.name)
@@ -34,6 +41,7 @@ func _on_dente_area_area_shape_entered(area_rid: RID, area: Area2D, area_shape_i
 func _on_cerdas_area_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.name == "denteArea":
 		bolha.emitting = true
+		
 
 func _on_cerdas_area_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.name == "denteArea":
