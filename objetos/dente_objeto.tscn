@@ -1,0 +1,140 @@
+[gd_scene load_steps=14 format=3 uid="uid://crcfms4vnruvb"]
+
+[ext_resource type="Script" uid="uid://e0svqxba7ol0" path="res://cenas/teste_recurso/dente_area_teste.gd" id="1_8eqsl"]
+[ext_resource type="Texture2D" uid="uid://cqq2nxhxq1ggu" path="res://images/dente/dead.png" id="2_j0a4p"]
+[ext_resource type="Texture2D" uid="uid://e0wn2fgtlp6" path="res://images/dente/feliz.png" id="3_awr2k"]
+[ext_resource type="Texture2D" uid="uid://dra373v13gqd3" path="res://images/dente/maismenos.png" id="4_7m57v"]
+[ext_resource type="Texture2D" uid="uid://t5w0n0h7gxo7" path="res://images/dente/triste.png" id="5_8dm1t"]
+[ext_resource type="Texture2D" uid="uid://rvnmy0ufv78i" path="res://images/dente/mancha1.png" id="6_rs7ab"]
+[ext_resource type="Texture2D" uid="uid://d1wrvlmtbiwiq" path="res://images/dente/mancha2.png" id="7_5g175"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2hj5c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_j0a4p")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_awr2k")
+}],
+"loop": true,
+"name": &"feliz",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7m57v")
+}],
+"loop": true,
+"name": &"maismenos",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_8dm1t")
+}],
+"loop": true,
+"name": &"triste",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_rs7ab")
+}],
+"loop": true,
+"name": &"tristre_manchado1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_5g175")
+}],
+"loop": true,
+"name": &"tristre_manchado2",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ly5pb"]
+size = Vector2(53, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6k7f2"]
+size = Vector2(9, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vn30f"]
+size = Vector2(8.5, 39.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2qr3"]
+size = Vector2(56, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n58f2"]
+size = Vector2(70, 72)
+
+[node name="DenteObjeto" type="Node2D"]
+position = Vector2(-2, 0)
+
+[node name="denteArea" type="Area2D" parent="."]
+z_index = -2
+position = Vector2(1, -2)
+script = ExtResource("1_8eqsl")
+
+[node name="denteSprite" type="AnimatedSprite2D" parent="denteArea"]
+z_index = -1
+z_as_relative = false
+position = Vector2(3.8146973e-06, 0)
+sprite_frames = SubResource("SpriteFrames_2hj5c")
+animation = &"triste"
+
+[node name="DenteColisorCima" type="Area2D" parent="denteArea"]
+
+[node name="CollisionShapeCima" type="CollisionShape2D" parent="denteArea/DenteColisorCima"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0.5, -32)
+shape = SubResource("RectangleShape2D_ly5pb")
+
+[node name="DenteColisorEsquerda" type="Area2D" parent="denteArea"]
+
+[node name="CollisionShapeEsquerda" type="CollisionShape2D" parent="denteArea/DenteColisorEsquerda"]
+z_index = -1
+z_as_relative = false
+position = Vector2(-30.5, -9)
+shape = SubResource("RectangleShape2D_6k7f2")
+disabled = true
+
+[node name="DenteColisorDireita" type="Area2D" parent="denteArea"]
+
+[node name="CollisionShapeDireita" type="CollisionShape2D" parent="denteArea/DenteColisorDireita"]
+z_index = -1
+z_as_relative = false
+position = Vector2(31.75, -8.75)
+shape = SubResource("RectangleShape2D_vn30f")
+disabled = true
+
+[node name="DenteColisorBaixo" type="Area2D" parent="denteArea"]
+
+[node name="CollisionShapeBaixo" type="CollisionShape2D" parent="denteArea/DenteColisorBaixo"]
+z_index = -1
+z_as_relative = false
+position = Vector2(0, 13)
+shape = SubResource("RectangleShape2D_j2qr3")
+
+[node name="CollisionShapeArea" type="CollisionShape2D" parent="denteArea"]
+z_index = -1
+z_as_relative = false
+shape = SubResource("RectangleShape2D_n58f2")
+
+[node name="Timer" type="Timer" parent="denteArea"]
+wait_time = 5.0
+autostart = true
+
+[connection signal="area_shape_entered" from="denteArea" to="denteArea" method="_on_area_shape_entered"]
+[connection signal="area_shape_entered" from="denteArea/DenteColisorCima" to="denteArea" method="_on_dente_colisor_cima_area_shape_entered"]
+[connection signal="area_shape_entered" from="denteArea/DenteColisorEsquerda" to="denteArea" method="_on_dente_colisor_esquerda_area_shape_entered"]
+[connection signal="area_shape_entered" from="denteArea/DenteColisorDireita" to="denteArea" method="_on_dente_colisor_direita_area_shape_entered"]
+[connection signal="area_shape_entered" from="denteArea/DenteColisorBaixo" to="denteArea" method="_on_dente_colisor_baixo_2_area_shape_entered"]
+[connection signal="timeout" from="denteArea/Timer" to="denteArea" method="_on_timer_timeout"]

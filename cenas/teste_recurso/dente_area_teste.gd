@@ -15,8 +15,8 @@ func _process(delta: float) -> void:
 		$DenteColisorCima/CollisionShapeCima.disabled = true
 		$DenteColisorEsquerda/CollisionShapeEsquerda.disabled = false
 		$DenteColisorDireita/CollisionShapeDireita.disabled = false
-	if rep_hor == 10:
-		$denteSprite.set_animation('maismenos')
+	if rep_hor >= 10 and rep_ver >= 10:
+		$denteSprite.set_animation('feliz')
 
 
 func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
