@@ -75,7 +75,6 @@ size = Vector2(56, 16)
 size = Vector2(70, 72)
 
 [node name="DenteObjeto" type="Node2D"]
-position = Vector2(-2, 0)
 
 [node name="denteArea" type="Area2D" parent="."]
 z_index = -2
