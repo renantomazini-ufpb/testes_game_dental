@@ -3,6 +3,9 @@ var ultimo = 'nada'
 var rep_hor = 0
 var rep_ver = 0
 
+
+func limpo() -> void:
+	emit_signal('dente_limpo')
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

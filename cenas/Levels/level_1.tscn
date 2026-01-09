@@ -6,7 +6,10 @@
 [node name="Level1" type="Node2D"]
 
 [node name="DenteObjeto" parent="." instance=ExtResource("1_hwbop")]
-position = Vector2(358, 81)
+position = Vector2(400, 270)
 
 [node name="Escova" parent="." instance=ExtResource("2_afc3o")]
 position = Vector2(200, 207)
+
+[node name="DenteObjeto2" parent="." instance=ExtResource("1_hwbop")]
+position = Vector2(475, 273)
