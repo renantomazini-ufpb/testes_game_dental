@@ -5,6 +5,7 @@ var rep_ver = 0
 
 
 func limpo() -> void:
+	print("Testado limpeza")
 	emit_signal('dente_limpo')
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

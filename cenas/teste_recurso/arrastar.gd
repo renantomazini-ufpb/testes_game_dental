@@ -6,6 +6,7 @@ var offset := Vector2.ZERO
 @onready var escova: AnimatedSprite2D = $AnimatedSprite2D
 @onready var bolha: CPUParticles2D = $CerdasArea/CerdasColision/Bolhas
 var max_points := 100
+var noDente = false
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -22,6 +23,7 @@ func _input_event(viewport, event, shape_idx):
 
 func _ready() -> void:
 	escova.pause()
+	bolha.emitting = false
 
 func _process(delta):
 	if dragging:
@@ -33,6 +35,10 @@ func _process(delta):
 		#print("----")
 	else:
 		escova.pause()
+	if noDente == true:
+		bolha.emitting = true
+	if noDente == false:
+		bolha.emitting = false
 
 func _on_dente_area_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	#print(area.name)
@@ -40,12 +46,15 @@ func _on_dente_area_area_shape_entered(area_rid: RID, area: Area2D, area_shape_i
 
 func _on_cerdas_area_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.name == "denteArea":
-		bolha.emitting = true
+	#	bolha.emitting = true
+		noDente = true
 		
 
 func _on_cerdas_area_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.name == "denteArea":
-		bolha.emitting = false
+	#	bolha.emitting = false
+		noDente = false
+		
 
 
 func _on_dente_colisor_cima_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:

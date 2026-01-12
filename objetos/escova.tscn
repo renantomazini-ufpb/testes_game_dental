@@ -60,13 +60,14 @@ position = Vector2(-1.0000029, 3)
 emitting = false
 amount = 18
 texture = ExtResource("5_vv1k0")
-lifetime = 0.35000000000000003
 preprocess = 0.5
 emission_shape = 3
 emission_rect_extents = Vector2(20, 20)
 gravity = Vector2(0, 0)
 scale_amount_min = 0.05
 scale_amount_max = 0.1
+
+[node name="TimerEspuma" type="Timer" parent="."]
 
 [connection signal="area_shape_entered" from="AreaEscova/CerdasArea" to="AreaEscova" method="_on_cerdas_area_area_shape_entered"]
 [connection signal="area_shape_exited" from="AreaEscova/CerdasArea" to="AreaEscova" method="_on_cerdas_area_area_shape_exited"]
